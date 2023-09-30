@@ -402,6 +402,96 @@ h3 {
   background-color: #ffba3a;
 }
 
+.searchResult {
+  position: absolute;
+  display: none;
+  width: 30vw;
+  height: 0;
+  background-color: white;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  overflow: scroll;
+  padding: 1% 2.5%;
+  z-index: 2;
+}
+.showSearchResult {
+  animation: showSearchResult 0.25s linear forwards;
+}
+.closeSearchResult {
+  animation: closeSearchResult 0.25s linear forwards;
+}
+.search-menu-name {
+  margin-right: 10px;
+}
+@keyframes showSearchResult  {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 17.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes closeSearchResult  {
+  from {
+    height: 17.5rem;
+    opacity: 1;
+
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.searchTitle {
+  font-size: 1.5rem;
+}
+.searchImg {
+  display: inline-block;
+  width: 5rem;
+  aspect-ratio: 1;
+  background-color: gray;
+  border-radius: 50%;
+  margin-right: 5%;
+  background-size: cover;
+  background-image: url("");
+}
+.searchTitle{
+  margin: 5% 0;
+}
+
+.searchRestaurant  {
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  margin: 1.5% 0;
+  border-radius: 25px;
+}
+
+.searchRestaurant:hover{
+  cursor: pointer;
+  background-color: #e0f0d1;
+}
+
+.searchMenu {
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  margin: 1.5% 0;
+  border-radius: 25px;
+
+}
+
+.searchMenu:hover {
+  cursor: pointer;
+  background-color: #e0f0d1;
+}
+
+
+
 /* /////////////////////////////////////// */
 /* 반응형 */
 @media only screen and (max-width: 920px) {
@@ -533,6 +623,7 @@ h3 {
 
   .search {
     width: 200px;
+    position: relative;
   }
 
   .search input {

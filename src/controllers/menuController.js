@@ -1,12 +1,12 @@
 const { Restaurant, Menu, RestaurantImage, User } = require('../models');
 const { Op } = require('sequelize');
 
-exports.searchMenu = (req, res) => {
+exports.searchMenu = async (req, res) => {
   try {
     const { q, page } = req.query;
     const { id } =
       req.session && req.session.userInfo ? req.session.userInfo : -1;
-    Menu.findAndCountAll({
+    const response = await Menu.findAndCountAll({
       include: [
         {
           model: Restaurant,
@@ -31,10 +31,10 @@ exports.searchMenu = (req, res) => {
           [Op.like]: `%${q}%`,
         },
       },
-    }).then(response => {
-      res.send(response);
-    });
-  } catch {
+    })
+    res.json(response)
+  } catch (error) {
+    console.log(error)
     res.status(500).send();
   }
 };

@@ -152,9 +152,6 @@ exports.getSearchRestaurantByName = async (req, res) => {
         },
       ],
     });
-    if (response.rows.length === 0) {
-      throw Error();
-    }
     res.send(response);
   } catch (error) {
     console.log(error);
