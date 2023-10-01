@@ -58,8 +58,12 @@ app.use(
 
 app.use('/', indexRouter);
 
-db.sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
-  });
+// db.sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => {
+//     console.log(`http://localhost:${PORT}`);
+//   });
+// });
+
+app.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}`);
 });

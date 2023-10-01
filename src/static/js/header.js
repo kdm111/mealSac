@@ -10,6 +10,28 @@ const mobileLoginBtn = document.querySelector('.mobile-login');
 const loggedOutDiv = document.querySelector('.logged-out');
 const loggedInDiv = document.querySelector('.logged-in');
 const dropdown = document.querySelector('.dropdown-content');
+const darkModeBtn = document.querySelector('#darkModeBtn')
+const header = document.querySelector('.header')
+
+darkModeBtn.addEventListener('click', (e) => {
+  if (e.target.innerText === 'Dark') {
+    e.target.innerText = 'Bright'
+  } else {
+    e.target.innerText = 'Dark'
+  }
+  loginBtn.classList.toggle('dark-btn')
+  registerBtn.classList.toggle('dark-btn')
+  header.classList.toggle('dark')
+
+  const sesacDarkMode = window.localStorage.getItem('sesac')
+  if (sesacDarkMode) {
+    localStorage.setItem('sesacDarkMode' ,false)
+  } else {
+    localStorage.setItem('sesacDarkMode' ,true)
+  }
+  console.log(sesacDarkMode)
+
+})
 
 const updateButtonVisibility = () => {
   const isMobileOrFolded = window.innerWidth <= 480;
