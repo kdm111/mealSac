@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { User, Post, PostImage } = require('../models');
+const { User, Post, PostImage, Comment } = require('../models');
 
 //post_id 값으로 특정 게시물 조회
 exports.getPost = async (req, res) => {
@@ -27,7 +27,12 @@ exports.getPost = async (req, res) => {
       },
     ],
   });
-  console.log(result);
+  const comments = await Comment.findAll({
+    where : {post_id : post_id},
+    order : [['comment_id', 'DESC']],
+    include : [{model : User}]
+  })
+  result.Comments = [...comments]
   res.render('boardPost', {
     post: result,
     formatDate: function (dateString) {

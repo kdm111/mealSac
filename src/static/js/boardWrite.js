@@ -82,6 +82,10 @@ document.getElementById('postBtn').addEventListener('click', function (event) {
 
   const editorData = editor.getData();
   const title = document.getElementById('inputTitle').value;
+  if (!title) {
+    alert('제목을 작성해주세요')
+    return ;
+  }
   const boardType = document.getElementById('boardType').value;
   let board_id;
   if (boardType === 'notice') {
