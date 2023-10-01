@@ -39,7 +39,7 @@ exports.kakaoResult = async (req, res) => {
     user = await User.create({
       user_id : `${getUserInfo.data.id}@kakao.com`,
       password : "",
-      user_name : `${getUserInfo.data.id}kakao`
+      user_name : `kakao_${getUserInfo.data.id}`
     });
   }
   req.session.userInfo = {user_name : `${user.dataValues.user_name}`, id : `${user.dataValues.id}`};

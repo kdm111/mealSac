@@ -1,3 +1,5 @@
+const replyForm = document.querySelector('#replyForm')
+
 const category = () => {
   history.back();
 };
@@ -23,15 +25,22 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// 리뷰 등록
-const enterReply = async e => {
+// 댓글 등록
+const enterReply = async (e) => {
   e.preventDefault();
-
   const replyForm = document.getElementById('replyForm');
-
+  const postId = document.querySelector('.postBox').id;
   const formData = new FormData(replyForm);
   const replyContent = formData.get('replyContent');
+  const response = await axios.post('/api/comment', {
+    post_id : `${postId}`,
+    content : `${replyContent}`
+  })
+  console.log(response)
 };
+replyForm.addEventListener('submit', enterReply)
+
+
 
 // 수정
 const modifyBtn = () => {

@@ -3,8 +3,8 @@ const {User, Post, Comment} = require('../models')
 
 exports.createComment = (req, res) => {
   try {
-    const {id} = req.session.userInfo
-    const {post_id, content} = req.body
+    const {id} = req?.session?.userInfo
+    const {post_id, content} = req?.body
     if (!id || !post_id || !content) {
       res.status(400).send()
     }
@@ -13,14 +13,16 @@ exports.createComment = (req, res) => {
       post_id : post_id,
       content : content
     })
-    .then(() => {
-      res.send("잘 생성되었습니다.")
+    .then((response) => {
+      res.status(201).send(response)
     })
     .catch((error) => {
-      console.log(error)
+      console.error(error)
+      res.status(500).send()
     })
   } catch (error) {
-    res.send(error)
+    console.error(error)
+    res.status(500).send()
   }
 }
 

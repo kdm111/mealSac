@@ -4,10 +4,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
 }
-
 .desktop-logo {
   height: 40px;
+  cursor: pointer;
 }
 .mobile-logo,
 .hamburger,  /* 추가 */
@@ -159,6 +160,16 @@ footer p .contact {
 
 footer p {
   font-size: small;
+}
+
+.dark {
+  color : white;
+  background-color: rgb(64, 64, 64);
+}
+.dark-btn {
+  color : white;
+  border: 1px solid #a5e467;
+  background-color: black;
 }
 
 /* 모바일 뷰 (280px - 480px) */

@@ -4,7 +4,7 @@
     <%- include('../common/commonHead.ejs') %>
     <title>MealSac | 게시판</title>
     <link rel="stylesheet" href="/static/css/boardPost.css" />
-    <script defer src="/static/js/post.js"></script>
+    
   </head>
   <body>
     <%- include('../common/header.ejs') %>
@@ -70,27 +70,27 @@
             id="replyContent"
             placeholder="댓글을 입력해 주세요."
           ></textarea>
-          <button type="submit" id="replyBtn" onclick="enterReply()">
+          <button type="submit" id="replyBtn">
             등록
           </button>
         </form>
         <div class="replyList">
+          <% for (let reply of post.Comments) { %>
           <div class="reply">
             <div class="replyInfo">
-              <p>replyUserName</p>
-              <p>replyDate</p>
+              <p><%= reply.User.user_name %></p>
+              <p>
+                <%= formatDate(reply.dataValues.updatedAt) %>
+              </p>
             </div>
-            <div class="replycontent">으아앙</div>
-          </div>
-          <div class="reply">
-            <div class="replyInfo">
-              <p>replyUserName</p>
-              <p>replyDate</p>
+            <div class="replycontent">
+              <%= reply.dataValues.content %>
             </div>
-            <div class="replycontent">으아앙</div>
           </div>
+          <% }  %>
         </div>
       </div>
     </div>
+    <script defer src="/static/js/post.js"></script>
   </body>
 </html>
